@@ -1,0 +1,60 @@
+﻿<Window x:Name="mainWindow" x:Class="EasyAdd.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EasyAdd"
+        xmlns:resx="clr-namespace:EasyAdd.Properties"
+        mc:Ignorable="d"
+        Title="{x:Static resx:Resources.AppName}" Height="305" Width="275" 
+        MinHeight="300"
+        MinWidth="200"
+        Background="#FF252525" WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="CanResizeWithGrip"
+        >
+    <Window.Resources>
+        <Style x:Key="RoundedBtn" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="ButtonBorder" CornerRadius="5" BorderThickness="0" BorderBrush="Transparent" Background="White">
+                            <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontFamily" Value="Bahnschrift SemiCondensed"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <StackPanel x:Name="toolBar" Orientation="Horizontal" FlowDirection="RightToLeft" MouseDown="toolBar_MouseDown" MinHeight="30" VerticalAlignment="Top" Background="#303030" >
+            <Button x:Name="CloseBtn" Style="{StaticResource RoundedBtn}" Height="20" Width="20" Content="X" Click="CloseBtn_Click" Margin="5, 0, 0, 0"/>
+            <Button x:Name="MinimizeBtn" Style="{StaticResource RoundedBtn}" Margin="5" Height="20" Width="20" Content="_" Click="MinimizeBtn_Click" />
+
+        </StackPanel>
+        <Button Style="{StaticResource RoundedBtn}" Margin="0,0,0,14" Content="Add" Foreground="Black" HorizontalAlignment="Center" Width="95" Click="Button_Click" Height="36" VerticalAlignment="Bottom"/>
+        <ComboBox x:Name="ComboBox1"  Margin="10,66,11,0" Height="22" VerticalAlignment="Top">
+            <ComboBoxItem>For directory</ComboBoxItem>
+            <ComboBoxItem>For files</ComboBoxItem>
+        </ComboBox>
+
+        <TextBox x:Name="PathToEXE" BorderThickness="2" 
+                 FontFamily="Bahnschrift SemiCondensed" Margin="10,190,10,0" 
+                 Height="25" 
+                 VerticalAlignment="Top" VerticalContentAlignment="Center" SelectionBrush="#FF303030" CaretBrush="#FF303030" SelectionTextBrush="#FF303030" />
+
+        <TextBox x:Name="NameInContext" BorderThickness="2" 
+                 FontFamily="Bahnschrift SemiCondensed" Margin="10,128,10,0" 
+                 Height="26" VerticalAlignment="Top" 
+                 VerticalContentAlignment="Center" HorizontalContentAlignment="Left" SelectionBrush="#FF303030" CaretBrush="#FF303030" SelectionTextBrush="#FF303030" />
+
+        <TextBlock Foreground="White" Text="Select mode" FontSize="16" FontFamily="Bahnschrift SemiCondensed" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,42,0,0"/>
+        <TextBlock Foreground="White" Text="Enter name in context menu" FontSize="16" FontFamily="Bahnschrift SemiCondensed" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,93,0,0"/>
+        <TextBlock Foreground="White" Text="Enter path to app" FontSize="16" FontFamily="Bahnschrift SemiCondensed" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,159,0,0"/>
+        <TextBlock x:Name="SucMessage" Foreground="LimeGreen" Text="Operation success!" FontSize="16" FontFamily="Bahnschrift SemiCondensed" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,225,0,0" Visibility="Hidden"/>
+
+    </Grid>
+</Window>
